@@ -1,4 +1,4 @@
-#11 Create, inherit, and then define the :action we want inside of it. Connect it to the html.erb file -> SEARCH list.html.erb
+#11 Create class, inherit from Parent class, and then define the method(s) (:action) we want inside of it. Connect the methods to the corresponding html.erb file -> SEARCH list.html.erb
 
 class DirectorsController < ApplicationController
 
@@ -6,10 +6,22 @@ class DirectorsController < ApplicationController
     render ({template: "director_templates/list"})
   end
 
+  def junior
+
+    render ({template: "director_templates/junior"})
+  end
+
+  def senior
+
+    render({template: "director_templates/senior"})
+  end
+
+
+
   def show
     the_id = params.fetch("the_id")
 
-    #17 This will return a RELATIONS (i.e. Array-like structure). To utilize the Instance within it, we must use .at() to utilize the row. After this, we can use the @the_director and utilize necessary HTML to match the target. SEARCH details.html.erb for #18
+    #17 This will return a RELATIONS (i.e. Array-like structure). To utilize the Instance within it, we must use .at() to take it out of the RELATIONS. Only then can we access the data (@the_director) within it.SEARCH details.html.erb for #18
     @the_director = Director.where({ :id => the_id}).at(0)
 
 

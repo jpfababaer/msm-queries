@@ -2,8 +2,10 @@
 
 <a href="/directors">Go back</a>
 
+<!--17.5 <hr> is a "thematic break". It basically creates a solid horizontal line. Helps break the webpage into section. -->
 <hr>
 
+<!--17.6 <dl> is a description list. Encloses a group of terms, <dt>, and the description for that ONE term, <dd>-->
 <dl>
   <dt>Name</dt>
   <dd> <%=@the_director.name%> </dd>
@@ -27,7 +29,7 @@
   <dd> <%= @the_director.updated_at%> </dd>
 </dl>
 
-<!--18 To display the filmographies the Director's had done, we have to use the "foreign_key" (i.e. :director_id) to search for the matching id # INSIDE of the Movies database-->
+<!--18 To display the filmographies the Director's had done, we have to use the "foreign_key" (i.e. :director_id) to search for the matching id # INSIDE of the Movies database. -> SEARCH actor_templates/details--> 
 <% matching_movies = Movie.where({ :director_id => @the_director.id })%>
 
 <table border="1">
@@ -53,7 +55,7 @@
     <td><%= a_movie.year%></td>
     <td><%= a_movie.director_id%></td>
     <td>
-      <a href="/movies/<%= a_movie.id%>%>">Show details</a>
+      <a href="/movies/<%= a_movie.id%>">Show details</a>
     </td>
   <tr>
 <%end%>

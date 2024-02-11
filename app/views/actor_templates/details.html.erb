@@ -1,0 +1,65 @@
+<h1>Actor #<%= @the_actor.id %> details</h1>
+
+<a href="/actors">Go back</a>
+
+<hr>
+
+<dl>
+  <dt>Name</dt>
+  <dd> <%=@the_actor.name%> </dd>
+
+  <dt>Dob</dt>
+  <dd> <%= @the_actor.dob%> </dd>
+
+  <dt>Bio</dt>
+  <dd> <%= @the_actor.bio%> </dd>
+
+  <dt>Image</dt>
+  <dd> 
+    <img src="<%= @the_actor.image%> " width="">
+  
+  </dd>
+
+  <dt>Created at</dt>
+  <dd> <%= @the_actor.created_at%> </dd>
+
+  <dt>Updated at</dt>
+  <dd> <%= @the_actor.updated_at%> </dd>
+</dl>
+
+
+<!--19 To deal with filmography, we have to deal with Many-to-Many relationships. Therefore, we need to determine what is the joining table that connects an Actor and the Movie = Character table. So query from Actor to Character to Movie. (refer to MSM lesson for visual)-->
+<% matching_characters = Character.where({ actor_id: @the_actor.id }) %>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th>Character name</th>
+    <th></th>
+  </tr>
+
+
+  <% matching_characters.each do |a_character| %>
+      <tr>
+<!--20 The Character database also contains the movie_id column. Therefore, we can use this value to connect to which Movie the character is from. Matching_movies uses this movie_id to return the row that contains the movie row details. Use .at() to remove it from the relation = now we can access the information about ONE movie again (via. the_movie). -> SEARCH routes.rb -->
+        <td> 
+        <% matching_movies = Movie.where({ id: a_character.movie_id})%>
+        <% the_movie = matching_movies.at(0)%>
+        <%= the_movie.title %>
+        </td>
+        <td><%= the_movie.title %></td>
+        <td>
+        <% matching_director = Director.where({ id: the_movie.director_id})%>
+        <% the_director = matching_director.at(0)%>
+        <%= the_director.name %>
+        </td>
+        <td> <%= a_character.name %></td>
+        <td>
+         <a href="/movies/<%= the_movie.id%>">Show details</a>
+         </td>
+      </tr>
+
+<% end %>
+</table>

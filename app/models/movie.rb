@@ -12,7 +12,8 @@
 #  updated_at  :datetime         not null
 #  director_id :integer
 #
-#4 This model is created via the command at step #3 to inherit all the useful methods we would like to use. -> SEARCH _movies.rb for #5
+
+#4 This model is created via the command at step #3 and inherits all the useful methods we would like to use on a database. Model = table/database in SQL -> SEARCH _movies.rb for #5
 
 class Movie < ApplicationRecord
 end

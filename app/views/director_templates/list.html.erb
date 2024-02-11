@@ -1,12 +1,13 @@
 <h1>List of Directors</h1>
 
-<!--#12 When we create model files in the model folders, Rails automatically requires those classes everywhere = these classes become Global variables-->
+<!--#12 When we create model files in the model folder, Rails automatically requires those classes everywhere = these classes become Global variables-->
 
 <!--#13 Now we can start following the target website and create the necessary HTML to match it while accessing all the proper databases. The "a_director" is an INSTANCE = a row. -->
 
 <table border="1">
-  <!--#14 Creating the row headings-->
+  <!--#14 Creating the row headings. <tr> creates the rows for the table. <th> creates the heading for these rows (indirectly defines how many columns there are)-->
   <tr>
+
     <th>ID</th>
     <th>Image</th>
     <th>Name</th>
@@ -15,7 +16,7 @@
 
   </tr>
 
-  <!--#15 Create another row (below) the ROW HEADING. These are the cells that need to be populated with information. SEARCH routes.rb--> 
+  <!--#15 Create another row BELOW the ROW HEADING. Use <td>: these create the cells that need to be populated with information. The "a_director" is an INSTANCE = ONE row of information. SEARCH routes.rb--> 
   <% Director.all.each do |a_director| %>
     <tr>
       <td> <%= a_director.id %></td>
