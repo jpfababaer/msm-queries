@@ -1,6 +1,6 @@
 #1 Navigate the initial files connected to the homepage web: THIS FILE + app/controllers/misc_controller.rb + app/views/misc_templates/home.html.
 
-#2 We will use a different feature of ActiveRecord, called "Migrations": this generates the necessary SQL to create the tables in the first place. 
+#2 We will use a different feature of ActiveRecord, called "Migrations": this generates the necessary SQL to create the tables/databases in the first place. 
 
 #3 Using ANOTHER bash prompt, utilize "migrations" by copy/pasting the command below:
 

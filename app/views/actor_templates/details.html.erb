@@ -49,7 +49,7 @@
         <% the_movie = matching_movies.at(0)%>
         <%= the_movie.title %>
         </td>
-        <td><%= the_movie.title %></td>
+        <td><%= the_movie.year %></td>
         <td>
         <% matching_director = Director.where({ id: the_movie.director_id})%>
         <% the_director = matching_director.at(0)%>

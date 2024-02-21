@@ -2,6 +2,7 @@
 
 <% director_dob_true = Director.where.not({ dob: nil })%>
 
+<!--Descending order: goes from the greatest value to the lowest. Therefore, the YOUNGEST director will have the HIGHEST birth year.-->
 <% youngest_director = director_dob_true.order({dob: :desc}).at(0) %>
 
 <p>The youngest director in our dataset right now is <a href="/directors/<%= youngest_director.id %>"><%= youngest_director.name %></a>, born on <%= youngest_director.dob.strftime("%B %e, %Y") %>.</p>
